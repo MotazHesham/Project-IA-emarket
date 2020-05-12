@@ -18,13 +18,30 @@ namespace emarket.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View();
+            ViewBag.categories_ajax = new SelectList(db.Categories, "Id", "name");
+            return View(db.Products.ToList());
         }
         // GET: Products1/Create
         public ActionResult Create()
         {
             ViewBag.category_id = new SelectList(db.Categories, "Id", "name");
             return View();
+        }
+
+
+        // GET: Products/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
         }
 
         // POST: Products1/Create
