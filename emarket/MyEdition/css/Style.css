@@ -121,3 +121,54 @@
 
     /* End footer*/
 
+/* ----------------------------------------------------------------*/
+/* ----------------------------------------------------------------*/
+
+/* start upload image*/
+
+.upload-img {
+    position: relative;
+}
+
+    .upload-img img {
+        height: 100%;
+        width: 90%;
+        box-shadow: 9px 4px 22px #9e9999;
+    }
+
+.overlay-upload-img {
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0000006e;
+    opacity: 0;
+    height: 100%;
+    width: 90%;
+}
+
+    .overlay-upload-img div {
+        position: relative;
+        top: 45%;
+        font-size: x-large;
+        color: #d2c6c6;
+    }
+
+.upload-img:hover .overlay-upload-img {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.upload-img input[type="file"] {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* end upload image*/
