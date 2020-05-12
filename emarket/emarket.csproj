@@ -117,9 +117,34 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cart.cs">
+      <DependentUpon>EmarketDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>EmarketDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmarketDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmarketDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmarketDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmarketDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmarketDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmarketDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>EmarketDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -136,6 +161,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\EmarketDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmarketDBModel.edmx</DependentUpon>
+      <LastGenOutput>EmarketDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EmarketDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmarketDBModel.edmx</DependentUpon>
+      <LastGenOutput>EmarketDBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="MyEdition\css\all.css" />
     <Content Include="MyEdition\css\bootstrap.min.css" />
     <Content Include="MyEdition\css\Style.css" />
@@ -165,6 +200,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\EmarketDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EmarketDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EmarketDBModel.edmx.diagram">
+      <DependentUpon>EmarketDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -190,9 +232,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="MyEdition\images\" />
   </ItemGroup>
   <ItemGroup>

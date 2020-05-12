@@ -13,10 +13,10 @@ namespace emarket.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class storeEntities : DbContext
+    public partial class storeEntities2 : DbContext
     {
-        public storeEntities()
-            : base("name=storeEntities")
+        public storeEntities2()
+            : base("name=storeEntities2")
         {
         }
     
@@ -25,8 +25,8 @@ namespace emarket.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
     }
 }

@@ -5,8 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="storeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'D:\COMPUTER SCIENCE\LEVEL 3\SECONDTERM\IA\FINAL PROJECT\EMARKET\EMARKET\APP_DATA\STORE.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="product_id" />
@@ -58,14 +56,9 @@ warning 6002: The table/view 'D:\COMPUTER SCIENCE\LEVEL 3\SECONDTERM\IA\FINAL PR
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="storeModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cart" EntityType="Self.Cart" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Cart].[product_id] AS [product_id], 
-    [Cart].[added_at] AS [added_at]
-    FROM [dbo].[Cart] AS [Cart]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Cart__product_id__34C8D9D1" Association="Self.FK__Cart__product_id__34C8D9D1">
             <End Role="Product" EntitySet="Product" />
             <End Role="Cart" EntitySet="Cart" />
@@ -80,6 +73,14 @@ warning 6002: The table/view 'D:\COMPUTER SCIENCE\LEVEL 3\SECONDTERM\IA\FINAL PR
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="storeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="added_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Cart__product_id__34C8D9D1" FromRole="Cart" ToRole="Product" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
@@ -99,29 +100,9 @@ warning 6002: The table/view 'D:\COMPUTER SCIENCE\LEVEL 3\SECONDTERM\IA\FINAL PR
           <Property Name="image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="category_id" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__25869641" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__product_id__34C8D9D1" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__25869641" FromRole="Product" ToRole="Category" />
         </EntityType>
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="product_id" />
-          </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="added_at" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Cart__product_id__34C8D9D1" FromRole="Cart" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK__Product__categor__25869641">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="category_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Cart__product_id__34C8D9D1">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
@@ -134,17 +115,29 @@ warning 6002: The table/view 'D:\COMPUTER SCIENCE\LEVEL 3\SECONDTERM\IA\FINAL PR
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="storeEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__Product__categor__25869641">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="storeEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="Carts" EntityType="Self.Cart" />
-          <AssociationSet Name="FK__Product__categor__25869641" Association="Self.FK__Product__categor__25869641">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
           <AssociationSet Name="FK__Cart__product_id__34C8D9D1" Association="Self.FK__Cart__product_id__34C8D9D1">
             <End Role="Product" EntitySet="Products" />
             <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__categor__25869641" Association="Self.FK__Product__categor__25869641">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -152,7 +145,15 @@ warning 6002: The table/view 'D:\COMPUTER SCIENCE\LEVEL 3\SECONDTERM\IA\FINAL PR
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="storeModelStoreContainer" CdmEntityContainer="storeEntities">
+        <EntityContainerMapping StorageEntityContainer="storeModelStoreContainer" CdmEntityContainer="storeEntities2">
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="storeModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="added_at" ColumnName="added_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="storeModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -171,14 +172,6 @@ warning 6002: The table/view 'D:\COMPUTER SCIENCE\LEVEL 3\SECONDTERM\IA\FINAL PR
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="storeModel.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="added_at" ColumnName="added_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
