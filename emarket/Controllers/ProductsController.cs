@@ -23,7 +23,7 @@ namespace emarket.Controllers
             {
                 data += "<div class='col-lg-2 col-md-3 col-sm-6 col-6'>";
                 data += "<div class='card item-part' style='width: 14rem;'>";
-                data += "<img src = '" + Url.Content(z.image) + "' class='img-thumbnail' style='height:170px'>";
+                data += "<img src = '" + Url.Content(z.image) + "' class='card-img-top' style='height:150px'>";
                 data += "<div class='card-body'>";
                 data += "<h4 class='card-title' style ='margin -bottom: 25px' >" + z.name + "</h4>";
                 data += "<hr />";
@@ -48,7 +48,7 @@ namespace emarket.Controllers
             {
                 data += "<div class='col-lg-2 col-md-3 col-sm-6 col-6'>";
                 data += "<div class='card item-part' style='width: 14rem;'>";
-                data += "<img src = '" + Url.Content(z.image) + "' class='img-thumbnail' style='height:170px'>";
+                data += "<img src = '" + Url.Content(z.image) + "' class='card-img-top' style='height:150px'>";
                 data += "<div class='card-body'>";
                 data += "<h4 class='card-title' style ='margin -bottom: 25px' >" + z.name + "</h4>";
                 data += "<hr />";

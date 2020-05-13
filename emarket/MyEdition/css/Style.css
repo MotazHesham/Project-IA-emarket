@@ -245,11 +245,11 @@
     transition: all .3s ease-in-out;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 3%;
     background-color: #0000006e;
     opacity: 0;
     height: 100%;
-    width: 90%;
+    width: 85%;
 }
 
     .overlay-upload-img div {
@@ -269,7 +269,7 @@
     top: 0;
     z-index: 999;
     height: 100%;
-    width: 100%;
+    width: 85%;
     opacity: 0;
     cursor: pointer;
 }

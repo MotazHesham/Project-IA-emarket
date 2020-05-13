@@ -13,8 +13,7 @@
 <div class="form-horizontal container">
     <h4 class="text-center">Add New Product</h4>
     <hr />
-
-    <div class="form-group col-lg-6 col-md-7 upload-img">
+    <div class="col-8 offset-md-3 upload-img">
         <div class="col-md-10">
             <input type="file" id="imgFile" name="imgFile" />
             <img id="img" src="~/MyEdition/images/empty.jpg" name="img">
@@ -61,11 +60,11 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-success" />
+            <input type="submit" value="Create" class="btn btn-success btn-lg" />
+            <a href="@Url.Action("index" ,"Products")"  class="btn btn-outline-info btn-lg">Back To List</a>
         </div>
 
         <div>
-            @Html.ActionLink("Back to List", "Index")
         </div>
     </div>
 </div>
