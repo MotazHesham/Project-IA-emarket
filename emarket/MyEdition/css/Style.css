@@ -41,6 +41,65 @@
 
 
 
+    /* Start item-cards*/
+
+
+        .manage-items .nav-item {
+            margin-left: 300px;
+        }
+
+        .manage-items .nav-ajax{
+            border-radius:50px;
+            padding:7px 14px
+        }
+
+        .item-view {
+            margin-top: 25px;
+        }
+
+        .item-part {
+            float: left;
+            margin-left: 60px;
+            margin-bottom: 20px;
+            box-shadow: 9px 9px 16px #a9a5a5;
+            cursor: pointer;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .item-part-overlay {
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            background-color: #0000006e;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .item-part:hover .item-part-overlay {
+            opacity: 1;
+        }
+
+        .item-part-overlay a {
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            margin-left: 10px;
+            position: relative;
+            top: 40%;
+            right: -85%;
+        }
+
+        .item-part-overlay:hover a {
+            right: 0%;
+        }
+
+    /* End item-cards*/
 
 /* ----------------------------------------------------------------*/
 /* ----------------------------------------------------------------*/

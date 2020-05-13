@@ -19,4 +19,28 @@ $(document).ready(function(){
 		}
 	});
 
+	/*ajax call*/
+	$('#categories_ajax').on('change', function () {
+		var category_id = $(this).val();
+		$.ajax({
+			method: "Post",
+			url: "/Products/category_select/",
+			data: { "category_id": category_id },
+			success: function (data) {
+				$('#category-select').html(data);
+			}
+		})
+	})
+
+	/*ajax call*/
+	$('#select_all_products').on('click', function () {
+		$.ajax({
+			method: "Post",
+			url: "/Products/select_all_products/",
+			success: function (data) {
+				$('#category-select').html(data);
+			}
+		})
+	})
+
 });	
