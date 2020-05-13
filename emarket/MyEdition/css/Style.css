@@ -5,10 +5,17 @@
     /* Start navbar*/
 
         .navbar-brand {
-            margin-left: 47%;
             font-family: 'Lobster', cursive;
             font-size: 30px;
             font-weight: 500;
+        }
+
+        .nav-scrolling{
+            background-color:#011515;
+            transition:background-color 0.8s ease;
+        }
+        .nav-scrolling00{
+            background-color:#01151500
         }
 
     /* End navbar*/
@@ -18,20 +25,62 @@
 
     /* Start Carousel*/
 
-        .carousel-inner {
-            height: 600px !important;
+        .wave-container {
+            position: relative;
+            z-index:999;
+            background: #2c3e50;
+            height: 80vh;
         }
 
-        .carousel-inner:after {
+        .wave-container .welcome-text{
+            height:500px;
+            width:500px;
+            position:absolute;
+            top:-20%;
+            left:7%;
+            z-index:2;
+            color:white;
+            line-height:20px;
+        }
+
+        .wave-container img{
+            height:500px;
+            width:500px;
+            position:absolute;
+            top:9%;
+            right:-35%;
+            z-index:1;
+        }
+
+        .wave {
             position: absolute;
-            z-index: 1;
+            height: 198px;
             width: 100%;
-            height: 600px;
-            display: block;
-            left: 0;
-            top: 0;
+            background: #2c3e50;
+            bottom: 0;
+        }
+
+        .wave::before, .wave::after {
             content: "";
-            background: rgba(0,0,0,.5);
+            display: block;
+            position: absolute;
+            border-radius: 50% 100%;
+        }
+
+        .wave::before {
+            width: 55%;
+            height: 100%;
+            background-color: #2c3e50;
+            right: -1.5%;
+            top: 40%;
+        }
+
+        .wave::after {
+            width: 55%;
+            height: 109%;
+            background-color: #fff;
+            left: -1.5%;
+            top: 60%;
         }
 
     /* End Carousel*/
@@ -44,13 +93,13 @@
     /* Start item-cards*/
 
 
-        .manage-items .nav-item {
-            margin-left: 300px;
-        }
-
         .manage-items .nav-ajax{
             border-radius:50px;
             padding:7px 14px
+        }
+        .btn-nav-ajax{
+            background-color:#5581c3;
+            color:white;
         }
 
         .item-view {
@@ -58,16 +107,11 @@
         }
 
         .item-part {
-            float: left;
-            margin-left: 60px;
             margin-bottom: 20px;
             box-shadow: 9px 9px 16px #a9a5a5;
             cursor: pointer;
         }
 
-        .clear {
-            clear: both;
-        }
 
         .item-part-overlay {
             -webkit-transition: all .3s ease-in-out;

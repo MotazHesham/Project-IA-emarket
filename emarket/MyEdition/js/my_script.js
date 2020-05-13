@@ -1,6 +1,30 @@
 $(document).ready(function(){
 	"use strict";
 
+	//navbar scrolling animation
+	$(window).on("scroll", function () {
+		if ($(document).scrollTop() > 50) {
+			$('.navbar-edit').addClass('nav-scrolling');
+			$('.navbar-edit').removeClass('nav-scrolling00');
+		} else {
+			$('.navbar-edit').removeClass('nav-scrolling');
+		}
+	});
+
+	$(".wave-container img").animate({
+		right: "8%"
+	}, 1000).animate({
+		right: "5%"
+	}, 700);
+
+	$(".wave-container .welcome-text").animate({
+		top: "38%"
+	}, 1000).animate({
+		top: "34%"
+	}, 700);
+
+
+
 	//function change img preview when edit item ... before upload page 
 	$('#imgFile').change(function () {
 		var input = this;

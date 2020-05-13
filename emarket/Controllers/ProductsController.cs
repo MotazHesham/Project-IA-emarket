@@ -21,7 +21,8 @@ namespace emarket.Controllers
             String data = "";
             foreach (var z in product)
             {
-                data += "<div class='card item-part' style='width: 18rem;'>";
+                data += "<div class='col-lg-2 col-md-3 col-sm-6 col-6'>";
+                data += "<div class='card item-part' style='width: 14rem;'>";
                 data += "<img src = '" + Url.Content(z.image) + "' class='img-thumbnail' style='height:170px'>";
                 data += "<div class='card-body'>";
                 data += "<h4 class='card-title' style ='margin -bottom: 25px' >" + z.name + "</h4>";
@@ -29,8 +30,9 @@ namespace emarket.Controllers
                 data += "<span style = 'color: grey' > Price: " + z.price + "$</span>";
                 data += "</div>";
                 data += "<div class='item-part-overlay text-center' > ";
-                data += "<a href = '/Products/Details/" + z.Id + "' style ='color: white' class='btn btn-primary' ><i class='fab fa-pagelines' ></i> View</a>";
+                data += "<a href = '/Products/Details/" + z.Id + "' style ='color: white' class='btn btn-primary' ><i class='fab fa-pagelines' ></i> View</a> <br /> <br />";
                 data += "<a href='#' style='color: white' class='btn btn-success'>Add To Cart</a>";
+                data += "</div>";
                 data += "</div>";
                 data += "</div>";
             }
@@ -44,7 +46,8 @@ namespace emarket.Controllers
             String data = "";
             foreach (var z in product)
             {
-                data += "<div class='card item-part' style='width: 18rem;'>";
+                data += "<div class='col-lg-2 col-md-3 col-sm-6 col-6'>";
+                data += "<div class='card item-part' style='width: 14rem;'>";
                 data += "<img src = '" + Url.Content(z.image) + "' class='img-thumbnail' style='height:170px'>";
                 data += "<div class='card-body'>";
                 data += "<h4 class='card-title' style ='margin -bottom: 25px' >" + z.name + "</h4>";
@@ -52,8 +55,9 @@ namespace emarket.Controllers
                 data += "<span style = 'color: grey' > Price: " + z.price + "$</span>";
                 data += "</div>";
                 data += "<div class='item-part-overlay text-center' > ";
-                data += "<a href = '/Products/Details/" + z.Id + "' style ='color: white' class='btn btn-primary' ><i class='fab fa-pagelines' ></i> View</a>";
+                data += "<a href = '/Products/Details/" + z.Id + "' style ='color: white' class='btn btn-primary' ><i class='fab fa-pagelines' ></i> View</a> <br /> <br />";
                 data += "<a href='#' style='color: white' class='btn btn-success'>Add To Cart</a>";
+                data += "</div>";
                 data += "</div>";
                 data += "</div>";
             }
