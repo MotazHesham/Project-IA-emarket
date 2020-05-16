@@ -1,0 +1,74 @@
+﻿@model emarket.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row justify-content-around">
+
+        <div class="col-lg-6">
+            <div class="card border-info mb-3" style="position:relative;right:-15% ;width:400px">
+
+                <div class="card-header" style="text-align: center; font-weight: bold;">Update Product</div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <span style="font-weight:bold;"> @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-3" }) </span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span style="font-weight:bold;"> @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-3" }) </span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span style="font-weight:bold;"> @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-4" }) </span>
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span style="font-weight:bold;"> @Html.LabelFor(model => model.category_id, htmlAttributes: new { @class = "control-label col-md-4" })</span>
+                        <div class="col-md-10">
+                            @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="position:relative;right:-17%;">
+                    <input type="submit" value="update" class="btn btn-success" />
+                    @Html.ActionLink("back to list", "index", "null", new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h3 class="font-weight-bold">Image </h3>
+            <img id="img" src="@Url.Content(Model.image)" name="img" style="position:relative;right:-11%;left:-12px;height:300px;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+
+            <div class="col-md-offset-2 col-md-10" style="position:relative;right:-17%;">
+                <br />
+                <input type="file" id="imgFile" name="imgFile" />
+
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

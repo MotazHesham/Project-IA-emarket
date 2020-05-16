@@ -32,10 +32,21 @@
 
         <ul class="navbar-nav pull-sm-right">
             <li class="nav-item">
-                <button type="button" class="btn btn-outline-success">Cart List</button>
+                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example-modal-lg">Cart List</button>
             </li>
         </ul>
     </nav>
+
+    @* ======pop up modal ======*@
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content text-center">
+               Cart List 
+                <hr />
+            </div>
+        </div>
+    </div>
 
     @* ===================== End NavBar ===================== *@
 
@@ -46,7 +57,9 @@
         <section class="wave-container">
             <div class="welcome-text text-center">
                 <h1 style="font-family: 'Lobster', cursive;
-                     font-size: 60px;"><span style="color:aqua">E</span>Market App</h1>
+                     font-size: 60px;">
+                    <span style="color:aqua">E</span>Market App
+                </h1>
                 <p style="font-size: 16px;">It's time to get best quality ...</p>
             </div>
             <img src="~/MyEdition/images/wave.svg" />

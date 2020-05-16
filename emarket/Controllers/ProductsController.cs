@@ -121,6 +121,50 @@ namespace emarket.Controllers
 
             return View(product);
         }
+
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Id = new SelectList(db.Carts, "product_id", "product_id", product.Id);
+            ViewBag.category_id = new SelectList(db.Categories, "Id", "name", product.category_id);
+            return View(product);
+        }
+        // POST: Products1/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,name,price,description,category_id")] Product product, HttpPostedFileBase imgFile)
+        {
+            if (imgFile != null)
+            {
+                string path = "~/uploads/" + Path.GetFileName(imgFile.FileName);
+                imgFile.SaveAs(Server.MapPath(path));
+                product.image = path;
+            }
+            else
+            {
+                Product obj = db.Products.AsNoTracking().Where(x => x.Id == product.Id).ToList().FirstOrDefault();
+                string myObjectstring = obj.image.ToString();
+                product.image = myObjectstring;
+            }
+
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
         // GET: products/Delete/5
         public ActionResult Delete(int? id)
         {

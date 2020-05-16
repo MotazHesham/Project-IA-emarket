@@ -237,6 +237,7 @@
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\delete.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MyEdition\images\" />
