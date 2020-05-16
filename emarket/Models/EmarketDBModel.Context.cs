@@ -13,10 +13,10 @@ namespace emarket.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class storeEntities2 : DbContext
+    public partial class storeEntities : DbContext
     {
-        public storeEntities2()
-            : base("name=storeEntities2")
+        public storeEntities()
+            : base("name=storeEntities")
         {
         }
     

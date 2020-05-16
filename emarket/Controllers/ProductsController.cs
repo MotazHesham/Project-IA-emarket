@@ -13,7 +13,7 @@ namespace emarket.Controllers
 {
     public class ProductsController : Controller
     {
-        private storeEntities2 db = new storeEntities2();
+        private storeEntities db = new storeEntities();
 
         public JsonResult category_select(int category_id)
         {
