@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	"use strict";
 
+
 	//navbar scrolling animation
 	$(window).on("scroll", function () {
 		if ($(document).scrollTop() > 50) {
@@ -66,5 +67,6 @@ $(document).ready(function(){
 			}
 		})
 	})
+
 
 });	

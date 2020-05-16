@@ -71,6 +71,7 @@ namespace emarket.Controllers
         public ActionResult Index()
         {
             ViewBag.categories_ajax = new SelectList(db.Categories, "Id", "name");
+            ViewBag.cartlist= db.Carts.ToList();
             return View(db.Products.ToList());
         }
         // GET: Products1/Create

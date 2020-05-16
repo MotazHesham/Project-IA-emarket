@@ -53,8 +53,27 @@
                             <span style="color: grey">Price: @product.price$</span>
                         </div>
                         <div class="item-part-overlay text-center">
-                            <a href="@Url.Action("Details" ,"Products" ,new { id=product.Id })" style="color: white" class="btn btn-primary"><i class="fab fa-pagelines"></i> View</a> <br /> <br />
-                            <a href="#" style="color: white" class="btn btn-success">Add To Cart</a>
+                            <a href="@Url.Action("Details", "Products", new { id = product.Id })" style="color: white" class="btn btn-primary"><i class="fab fa-pagelines"></i> View</a> <br /> <br />
+                            @{
+                                int check = 0;
+                                foreach (var cart_item in ViewBag.cartlist)
+                                {
+                                    if (cart_item.product_id == product.Id)
+                                    {
+                                        check = 1;
+                                        break;
+                                    }
+                                }
+                                if (check == 0)
+                                {
+                                    <a href="@Url.Action("add" ,"Carts" ,new { id=product.Id })" style="color: white" class="btn btn-success">Add To Cart</a>
+                                }
+                                else
+                                {
+                                    <a href="#" style="color: white" class="btn btn-dark">Added To Cart <i class="fas fa-check"></i></a>
+                                }
+                            }
+
                         </div>
                     </div>
                 </div>

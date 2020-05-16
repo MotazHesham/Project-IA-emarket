@@ -1,36 +1,31 @@
 ﻿@model IEnumerable<emarket.Models.Cart>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.added_at)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.price)
-        </th>
-        <th></th>
-    </tr>
+<h1 class="container text-center"
+    style="
+    background-color: #040303f2;
+    color: #faa806;
+    padding: 5%; ">
+    Cart List
+</h1>
+<hr />
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.added_at)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.price)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model)
+{
 
-</table>
+    <div class="card w-75 mb-5 ml-5">
+
+        <a href="@Url.Action("Delete" ,"Carts" ,new { id=item.product_id})" class="btn btn-primary" style="position: absolute; height: 100%; background: #a82121; padding: 20px; padding-top: 40px;">
+            <i class="fas fa-trash"></i>
+            Delete
+        </a>
+        <div class="card-body" style="        position: relative;
+        left: 17%; ">
+            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Product.name) - @Html.DisplayFor(modelItem => item.Product.price)</h5>
+
+            <p class="card-title" style="color:grey"> @Html.DisplayFor(modelItem => item.added_at)</p>
+        </div>
+    </div>
+
+
+}
