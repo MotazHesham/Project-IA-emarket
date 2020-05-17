@@ -33,6 +33,42 @@ namespace emarket.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
+        // GET: carts/Delete/5
+        public ActionResult Deleteid(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cart cart = db.Carts.Find(id);
+            if (cart == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cart);
+        }
+
+        // POST: carts/Delete/5
+        
+        public ActionResult Delete(int id)
+        {
+            Cart cart = db.Carts.Find(id);
+            db.Carts.Remove(cart);
+            db.SaveChanges();
+            return RedirectToAction("index", "Products");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+
+
 
     }
 }
