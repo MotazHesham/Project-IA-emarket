@@ -3,50 +3,46 @@
 
 
     <div class="container">
-        <h2 style=" text-align:center;font-family:'Comic Sans MS';font-style:italic;">
-            @Html.DisplayFor(model => model.name)-
-        @Html.DisplayFor(model => model.price)$(@Html.DisplayFor(modelItem => Model.Category.name))
-    </h2>
-    <br />
-    <div class="row justify-content-around">
+        <h1 style=" text-align:center;font-family:'Comic Sans MS';font-style:italic;">
+            @Html.DisplayFor(model => model.name) |
+            @Html.DisplayFor(model => model.price)$ (<spam style="color:#5d769c">@Html.DisplayFor(modelItem => Model.Category.name)</spam>)
+        </h1>
+        <br />
+        <div class="row justify-content-around">
 
-        <img src="@Url.Content(Model.image)" class="col-lg-6  " style="height:300px; box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); " />
+            <div  class="col-lg-6">
+                <img src="@Url.Content(Model.image)" style="height: 300px; box-shadow: 9px 9px 16px #a9a5a5;" />
+            </div>
 
+            <div class="col-lg-6">
+                <div class="card bg-light mb-3" style="position:relative;right:-15%;width:450px; height:265px;border-color:gainsboro;border-bottom:none;">
+                    <div class="card-header" style="text-align: center; font-weight: bold;">item information</div>
+                    <div class="card-body">
+                        <dl>
+                            <dt>@Html.DisplayNameFor(model => model.name):</dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.name)
+                            </dd>
 
-        <div class="col-lg-6">
-            <div class="card bg-light mb-3" style="position:relative;right:-15%;width:450px; height:265px;border-color:gainsboro;border-bottom:none;">
-                <div class="card-header" style="text-align:center;font-weight:bold;">item information</div>
-                <div class="card-body">
-                    <dl>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.name):
+                            <dt>@Html.DisplayNameFor(model => model.price):</dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.price)$
+                            </dd>
 
-                        </dt>
-                        <dd>  @Html.DisplayFor(model => model.name)</dd>
-
-
-                        <dt>@Html.DisplayNameFor(model => model.price):</dt>
-                        <dd>@Html.DisplayFor(model => model.price)$</dd>
-
-                        <dt> @Html.DisplayNameFor(model => model.description):</dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.description)
-                        </dd>
-                    </dl>
-                    <br />
-                    <p style="position:relative;right:-17%;">
-                        @Html.ActionLink("update", "Edit", new { id = Model.Id },new {@class="btn btn-outline-success" })
-
-                        @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "btn btn-outline-danger" })
-                        @Html.ActionLink("back to list", "index", "null", new { @class = "btn btn-outline-primary" })
-
-
-
-
-                    </p>
+                            <dt>@Html.DisplayNameFor(model => model.description):</dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.description)
+                            </dd>
+                        </dl>
+                        <br />
+                        <p style="position:relative;right:-17%;">
+                            @Html.ActionLink("update", "Edit", new { id = Model.Id },new {@class="btn btn-outline-success" })
+                            @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "btn btn-outline-danger" })
+                            @Html.ActionLink("back to list", "index", "null", new { @class = "btn btn-outline-primary" })
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     </div>

@@ -18,6 +18,7 @@ namespace emarket.Controllers
         public JsonResult category_select(int category_id)
         {
             var product = db.Products.Where(x => x.category_id == category_id).ToList();
+            var carts = db.Carts.Include(c => c.Product).ToList();
             String data = "";
             foreach (var z in product)
             {
@@ -30,19 +31,35 @@ namespace emarket.Controllers
                 data += "<span style = 'color: grey' > Price: " + z.price + "$</span>";
                 data += "</div>";
                 data += "<div class='item-part-overlay text-center' > ";
-                data += "<a href = '/Products/Details/" + z.Id + "' style ='color: white' class='btn btn-primary' ><i class='fab fa-pagelines' ></i> View</a> <br /> <br />";
-                data += "<a href='#' style='color: white' class='btn btn-success'>Add To Cart</a>";
+                data += "<a href='/Products/Details/" + z.Id + "' style='color: white' class='btn btn-primary'><i class='fab fa-pagelines'></i> View</a> <br /> <br />";
+                int check = 0;
+                foreach (var cart_item in carts)
+                {
+                    if (cart_item.product_id == z.Id)
+                    {
+                        check = 1;
+                        break;
+                    }
+                }
+                if (check == 0)
+                {
+                    data += "<a href ='/Carts/add/" + z.Id + "' style = 'color: white' class='btn btn-success' > Add To Cart</a>";
+                }
+                else
+                {
+                    data += "<a href = '#' style='color: white' class='btn btn-dark'>Added To Cart<i class='fas fa-check'></i></a>";
+                }
                 data += "</div>";
                 data += "</div>";
                 data += "</div>";
             }
-            data += "<div class='clear'></div>";
             return Json(data);
         }
 
         public JsonResult select_all_products()
         {
             var product = db.Products.ToList();
+            var carts = db.Carts.Include(c => c.Product).ToList();
             String data = "";
             foreach (var z in product)
             {
@@ -55,13 +72,28 @@ namespace emarket.Controllers
                 data += "<span style = 'color: grey' > Price: " + z.price + "$</span>";
                 data += "</div>";
                 data += "<div class='item-part-overlay text-center' > ";
-                data += "<a href = '/Products/Details/" + z.Id + "' style ='color: white' class='btn btn-primary' ><i class='fab fa-pagelines' ></i> View</a> <br /> <br />";
-                data += "<a href='#' style='color: white' class='btn btn-success'>Add To Cart</a>";
+                data += "<a href='/Products/Details/" + z.Id + "' style='color: white' class='btn btn-primary'><i class='fab fa-pagelines'></i> View</a> <br /> <br />";
+                int check = 0;
+                foreach (var cart_item in carts)
+                {
+                    if (cart_item.product_id == z.Id)
+                    {
+                        check = 1;
+                        break;
+                    }
+                }
+                if (check == 0)
+                {
+                    data += "<a href ='/Carts/add/" + z.Id + "' style = 'color: white' class='btn btn-success' > Add To Cart</a>";
+                }
+                else
+                {
+                data += "<a href = '#' style='color: white' class='btn btn-dark'>Added To Cart<i class='fas fa-check'></i></a>";
+                }
                 data += "</div>";
                 data += "</div>";
                 data += "</div>";
             }
-            data += "<div class='clear'></div>";
             return Json(data);
         }
 
@@ -106,7 +138,7 @@ namespace emarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                string path = "";
+                string path = "~/uploads/empty.jpg";
                 if (imgFile != null)
                 {
                       path = "~/uploads/" + Path.GetFileName(imgFile.FileName);

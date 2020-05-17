@@ -3,25 +3,28 @@
 
 <h1 class="container text-center"
     style="
-    background-color: #040303f2;
-    color: #faa806;
-    padding: 5%; ">
-    Cart List
+    background-color: #040303d9;
+    color:white;
+    padding: 5%;
+    font-family: 'Lobster', cursive;
+    font-size: 38px;
+    font-weight: 500; 
+    ">
+    <span style="color:aqua">C</span>art<span style="color:aqua">L</span>ist
 </h1>
 <hr />
 
 @foreach (var item in Model)
 {
 
-    <div class="card w-75 mb-5 ml-5">
+    <div class="card w-75 mb-5 ml-5" style=" box-shadow: -6px 10px 4px #e6e5e5; border-radius: 0px 100px 41px 0px;">
 
-        <a href="@Url.Action("Delete" ,"Carts" ,new { id=item.product_id})" class="btn btn-primary" style="position: absolute; height: 100%; background: #a82121; padding: 20px; padding-top: 40px;">
+        <a href="@Url.Action("Delete" ,"Carts" ,new { id=item.product_id})" class="btn btn-primary confirm" style="position: absolute; height: 100%; background: #0b1b33; padding: 20px; padding-top: 40px;">
             <i class="fas fa-trash"></i>
             Delete
         </a>
-        <div class="card-body" style="        position: relative;
-        left: 17%; ">
-            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Product.name) - @Html.DisplayFor(modelItem => item.Product.price)</h5>
+        <div class="card-body" style="position: relative;left: 100px; ">
+            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Product.name) - $<span style="color:chocolate">@Html.DisplayFor(modelItem => item.Product.price)</span></h5>
 
             <p class="card-title" style="color:grey"> @Html.DisplayFor(modelItem => item.added_at)</p>
         </div>

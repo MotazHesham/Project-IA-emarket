@@ -1,6 +1,10 @@
 $(document).ready(function(){
 	"use strict";
 
+	/* function to sure that you want delete the item*/
+	$('.confirm').on("click", function () {
+		return confirm("Are You Sure Delete ?");
+	});
 
 	//navbar scrolling animation
 	$(window).on("scroll", function () {
